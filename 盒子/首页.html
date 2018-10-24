@@ -20,7 +20,7 @@
 			#body_1{
 				height: 100%;
 				width: 300px;
-				 background-color: purple;
+				background-color: purple;
 			}
 			#body_2{
 				height: 100%;
@@ -59,11 +59,12 @@
 				"img/5.jpg",
 				"img/6.jpg"
 			];
+			
 			var index = 0;
 			var nums;
 			function turnImg(){
 				index++;
-				index = index==6?0:index;
+				index = index==6?0:index;/*6张图片相互轮播*/
 				$("span").css("background-color","white");
 				$("#active"+index).css("background-color","red");
 				$("img").attr("src",imgs[index]);
@@ -87,7 +88,7 @@
 					/*点击span变红*/
 					$("span").css("background-color","white");
 					$("#active" + index).css("background-color","red");
-					nums = setTimeout("turnImg()",5000);
+					nums = setTimeout("turnImg()",5000);/*点击后5秒后继续轮播*/
 				})
 			})
 			
@@ -99,10 +100,17 @@
 		</div>
 		<div id="body">
 			<div id="body_1">
-				
+				<url style="list-style: none; font-size: 30px;line-height: 60px;">
+					<li>动漫电影</li>
+					<li>科幻电影</li>
+					<li>言情电影</li>
+					<li>恐怖电影</li>
+					<li>喜剧电影</li>
+				</url>
 			</div>
 			<div id="body_2">
 				<img src="img/1.jpg" style="height: 100%; width: 100%;" />	
+				<!--定义5个按钮-->
 				<div id="turn">
 					<span id="active0" style="background-color: red;"></span>
 					<span id="active1"></span>
