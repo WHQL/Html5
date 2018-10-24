@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*失真*/
+			#head{
+				height: 200px;
+				width: 100%;
+				background-color: pink;
+				/*display: flex;*/
+			}
+			#body{
+				height: 600px;
+				/*width: 1900px;*/
+				background-color: #FFE4C4;
+				display: flex;
+			}
+			#body_1{
+				height: 100%;
+				width: 300px;
+				 background-color: purple;
+			}
+			#body_2{
+				height: 100%;
+				width: 100%;
+				 /*background-color: black;*/
+				background-color: #800080;
+			}
+			#body_3{
+				height: 100%;
+				width: 300px;
+				background-color: purple;
+			}
+			span{
+				display: inline-block;
+				height: 20px;
+				weight:20px;
+				width:20px;
+				background-color: white;
+				border-radius: 50%;
+				position: relative;
+				top: -25px;
+				cursor: pointer;
+				left: 45%;
+		}
+			
+			
+			
+		</style>
+		<script src="js/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+		<script type="text/javascript">
+			var imgs = [
+				"img/1.jpg",
+				"img/2.jpg",
+				"img/3.jpg",
+				"img/4.jpg",
+				"img/5.jpg",
+				"img/6.jpg"
+			];
+			var index = 0;
+			var nums;
+			function turnImg(){
+				index++;
+				index = index==6?0:index;
+				$("span").css("background-color","white");
+				$("#active"+index).css("background-color","red");
+				$("img").attr("src",imgs[index]);
+				nums = setTimeout("turnImg()",1000);
+			}
+			
+			$(function(){
+				nums = setTimeout("turnImg()",1000);
+				/*点击切换图片*/
+				$("span").on("click",function(){
+					/*定时器关闭*/
+					clearTimeout(nums);
+					index = $(this).index();
+					var src = imgs[index];
+					$("img").attr("src",src);
+//					clearTimeout(nums);
+					/*获取被点击的span索引*/
+//					index = $(this).index();
+//					var src = imgs[index];
+//					$("img").attr("src",src);
+					/*点击span变红*/
+					$("span").css("background-color","white");
+					$("#active" + index).css("background-color","red");
+					nums = setTimeout("turnImg()",5000);
+				})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div id="head">
+			
+		</div>
+		<div id="body">
+			<div id="body_1">
+				
+			</div>
+			<div id="body_2">
+				<img src="img/1.jpg" style="height: 100%; width: 100%;" />	
+				<div id="turn">
+					<span id="active0" style="background-color: red;"></span>
+					<span id="active1"></span>
+					<span id="active2"></span>
+					<span id="active3"></span>
+					<span id="active4"></span>
+					<span id="active5"></span>
+				</div>
+			</div>
+			<div id="body_3">
+			</div>
+		</div>
+	</body>
+</html>
